@@ -48,7 +48,7 @@ def upload() -> str:
 def info(visual_id: str) -> Dict:
     response = requests.request(
         method="GET",
-        url=f"{api_url}/info?visual_id={visual_id}",
+        url=f"{api_url}/{visual_id}/info",
         headers=auth_headers,
     )
     return response.json()
@@ -62,20 +62,23 @@ def create(info: Dict, visual_id: str) -> Dict:
     # The api support the folowiing.
     # Note that any of these can be returned null, if that is the case we dont support a action for this image
     age_action: Optional[Dict] = actions.get("age")
-    diversify_actions: Optional[List[str]] = actions.get("diversify")
+    diversity_actions: Optional[List[str]] = actions.get("diversity")
     glasses_actions: Optional[List[str]] = actions.get("glasses")
-    smile_actions: Optional[List[str]] = actions.get("smile")
+    expressions_actions: Optional[List[str]] = actions.get("expressions")
+    hair_color_actions: Optional[List[str]] = actions.get("hair_color")
+    gender_actions: Optional[List[str]] = actions.get("gender")
+    makeup_actions: Optional[List[str]] = actions.get("makeup")
+    hair_line_actions: Optional[List[str]] = actions.get("hair_line")
 
     response = requests.request(
         method="POST",
-        url=f"{api_url}/create?visual_id={visual_id}",
+        url=f"{api_url}/{visual_id}/create",
         headers=auth_headers,
         json={
-            "visual_id": visual_id,
             "changes": [
                 {
                     "id": scene_object_id,
-                    "actions": {"diversify": diversify_actions[0]},
+                    "actions": {"diversity": diversity_actions[0]},
                 }
             ],
         },
