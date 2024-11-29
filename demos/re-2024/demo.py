@@ -1,24 +1,4 @@
 
-# Script 
-# Intro to bria
-
-# Act 1:
-# TODO: ask yoav 4 prompts of politition trademarks and 2 for quality 
-# Generate images via text prompts, talk about about safety (the fact we are unable to generate trademarks) 
-# and diversity.
-# Act 2:
-# TODO: sketch to image, add brad colors,  
-# Start working on the real campaign, using CN to emphasize the controllability Bria offers.
-# Generate multiple options based on the provided text.
-# Act 3:
-# TODO: a bowel 
-# Use lifestyle_shot_by_text to focus on ideation or specific requirements by experimenting with placements and backgrounds.
-# Act 4:
-# Image editing: enhance your image shoot by applying fine-grain touches.
-# Use tools like Eraser, Expand, and Increase Resolution.
-# Act 5:
-# Tailored generation, use icons 
-
 headers = {
   "Content-Type": "application/json",
   "api_token": "<Your API token here...>"
