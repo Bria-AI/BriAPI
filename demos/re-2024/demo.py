@@ -1,8 +1,9 @@
 
-headers = {
-  "Content-Type": "application/json",
-  "api_token": "<Your API token here...>"
-}
+# Before you start
+# 1. pip install -r requirements.txt
+# 2. Get your bria API token from here - https://platform.bria.ai/console/account/api-keys
+# 3. Create a .env file and add your bria token (BRIA_API_TOKEN=...)
+
 
 #%% init
 import requests
@@ -19,6 +20,15 @@ import io
 import json
 from PIL import ImageDraw, ImageFont
 
+def load_env_file(filepath):
+    with open(filepath, "r") as f:
+        for line in f:
+            if line.strip() and not line.startswith("#"):
+                key, value = line.strip().split("=", 1)
+                os.environ[key] = value
+
+# Load the .env file
+load_env_file(".env")
 
 def add_text_on_image(_image, text):
     draw = ImageDraw.Draw(_image)
@@ -85,6 +95,11 @@ def display_local_image(image_name: str):
 width = 128
 text_to_image_bria_website_url = "https://bria.ai/hs-fs/hubfs/ai%20image%20gen%20header.png?width=3363&height=2262&name=ai%20image%20gen%20header.png"
 eracer_bria_website_url = "https://bria.ai/hs-fs/hubfs/ERASER_API_blog20-30.gif?width=3630&height=2220&name=ERASER_API_blog20-30.gif"
+
+headers = {
+  "Content-Type": "application/json",
+  "api_token": os.getenv("BRIA_API_TOKEN")
+}
 
 #%% Into to bria
 display(IPyImage("./assets/bria-hl.png")) 

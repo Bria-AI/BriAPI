@@ -1,0 +1,6 @@
+requests
+Pillow
+numpy
+diffusers
+tqdm
+ipython
